@@ -42,7 +42,8 @@ class _ManagerHistoryViewState extends State<ManagerHistoryView> {
 
     return controller.games.where((game) {
       final statusUpper = game.status.toUpperCase();
-      final isHistory = statusUpper == 'COMPLETED' || statusUpper == 'CANCELLED';
+      final isHistory =
+          statusUpper == 'COMPLETED' || statusUpper == 'CANCELLED';
       if (!isHistory) return false;
 
       if (filter == 'COMPLETED' && statusUpper != 'COMPLETED') return false;
@@ -88,7 +89,8 @@ class _ManagerHistoryViewState extends State<ManagerHistoryView> {
                     controller: searchController,
                     onChanged: (_) => setState(() {}),
                     style: TextStyle(
-                      color: isDark ? AppColors.textPrimaryDark : Colors.black87,
+                      color:
+                          isDark ? AppColors.textPrimaryDark : Colors.black87,
                       fontSize: 14,
                     ),
                     decoration: InputDecoration(
@@ -205,8 +207,8 @@ class _ManagerHistoryViewState extends State<ManagerHistoryView> {
                 return RefreshIndicator(
                   onRefresh: controller.fetchClubGames,
                   child: ListView.separated(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     itemCount: displayList.length,
                     separatorBuilder: (_, __) => const SizedBox(height: 12),
                     itemBuilder: (context, index) {
@@ -263,7 +265,9 @@ class _ManagerHistoryViewState extends State<ManagerHistoryView> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: isDark ? AppColors.textPrimaryDark : Colors.black87,
+                          color: isDark
+                              ? AppColors.textPrimaryDark
+                              : Colors.black87,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -277,7 +281,8 @@ class _ManagerHistoryViewState extends State<ManagerHistoryView> {
                             .withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(6),
                         border: Border.all(
-                            color: isCompleted ? Colors.green : Colors.redAccent),
+                            color:
+                                isCompleted ? Colors.green : Colors.redAccent),
                       ),
                       child: Text(
                         game.status.toUpperCase(),
@@ -330,7 +335,9 @@ class _ManagerHistoryViewState extends State<ManagerHistoryView> {
                 Text(
                   'Date: ${AppDateUtils.formatDate(game.matchDate, format: "EEE, dd MMM yyyy")} (${AppDateUtils.formatTimeRange(game.startTime, game.endTime)})',
                   style: TextStyle(
-                    color: isDark ? AppColors.textSecondaryDark : Colors.grey.shade700,
+                    color: isDark
+                        ? AppColors.textSecondaryDark
+                        : Colors.grey.shade700,
                     fontSize: 12,
                   ),
                 ),

@@ -10,11 +10,13 @@ class WalletRepository {
     return await remoteDataSource.getWallet();
   }
 
-  Future<List<WalletTransactionModel>> getTransactions({int page = 1, int limit = 50}) async {
+  Future<List<WalletTransactionModel>> getTransactions(
+      {int page = 1, int limit = 50}) async {
     return await remoteDataSource.getTransactions(page: page, limit: limit);
   }
 
-  Future<RazorpayOrderModel> createTopupOrder(double amount, String idempotencyKey) async {
+  Future<RazorpayOrderModel> createTopupOrder(
+      double amount, String idempotencyKey) async {
     return await remoteDataSource.createTopupOrder(amount, idempotencyKey);
   }
 

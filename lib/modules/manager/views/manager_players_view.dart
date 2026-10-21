@@ -34,7 +34,8 @@ class _ManagerPlayersViewState extends State<ManagerPlayersView> {
   void _onSearchChanged(String query) {
     controller.fetchAllPlayers(
       search: query.trim().isEmpty ? null : query.trim(),
-      status: (selectedStatus.value == 'ALL' || selectedStatus.value == 'ALL PLAYERS')
+      status: (selectedStatus.value == 'ALL' ||
+              selectedStatus.value == 'ALL PLAYERS')
           ? null
           : selectedStatus.value,
     );
@@ -65,9 +66,8 @@ class _ManagerPlayersViewState extends State<ManagerPlayersView> {
               search: searchController.text.trim().isEmpty
                   ? null
                   : searchController.text.trim(),
-              status: selectedStatus.value == 'ALL'
-                  ? null
-                  : selectedStatus.value,
+              status:
+                  selectedStatus.value == 'ALL' ? null : selectedStatus.value,
             ),
           ),
         ],
@@ -84,7 +84,8 @@ class _ManagerPlayersViewState extends State<ManagerPlayersView> {
                     controller: searchController,
                     onChanged: _onSearchChanged,
                     style: TextStyle(
-                      color: isDark ? AppColors.textPrimaryDark : Colors.black87,
+                      color:
+                          isDark ? AppColors.textPrimaryDark : Colors.black87,
                       fontSize: 14,
                     ),
                     decoration: InputDecoration(
@@ -181,7 +182,8 @@ class _ManagerPlayersViewState extends State<ManagerPlayersView> {
               child: Obx(() {
                 if (controller.isActionLoading.value &&
                     controller.playersList.isEmpty) {
-                  return const AppLoader(message: 'Fetching player directory...');
+                  return const AppLoader(
+                      message: 'Fetching player directory...');
                 }
 
                 if (controller.playersList.isEmpty) {
@@ -202,8 +204,8 @@ class _ManagerPlayersViewState extends State<ManagerPlayersView> {
                         : selectedStatus.value,
                   ),
                   child: ListView.separated(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     itemCount: controller.playersList.length,
                     separatorBuilder: (_, __) => const SizedBox(height: 10),
                     itemBuilder: (context, index) {
@@ -220,8 +222,7 @@ class _ManagerPlayersViewState extends State<ManagerPlayersView> {
     );
   }
 
-  Widget _buildPlayerCard(
-      BuildContext context, Map<String, dynamic> player) {
+  Widget _buildPlayerCard(BuildContext context, Map<String, dynamic> player) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final String playerId = (player['id'] ?? player['userId'] ?? '').toString();
     final String name = (player['name'] ?? 'Player').toString();
@@ -296,18 +297,16 @@ class _ManagerPlayersViewState extends State<ManagerPlayersView> {
                                 : Colors.green.withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(6),
                             border: Border.all(
-                              color: isBlocked
-                                  ? Colors.redAccent
-                                  : Colors.green,
+                              color:
+                                  isBlocked ? Colors.redAccent : Colors.green,
                               width: 0.8,
                             ),
                           ),
                           child: Text(
                             isBlocked ? 'BLOCKED' : 'ACTIVE',
                             style: TextStyle(
-                              color: isBlocked
-                                  ? Colors.redAccent
-                                  : Colors.green,
+                              color:
+                                  isBlocked ? Colors.redAccent : Colors.green,
                               fontWeight: FontWeight.bold,
                               fontSize: 10,
                             ),
@@ -341,8 +340,8 @@ class _ManagerPlayersViewState extends State<ManagerPlayersView> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 14, vertical: 6),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                   ),
                   onPressed: () => _confirmUnblock(context, playerId, name),
                   icon: const Icon(Icons.check_circle_outline,
@@ -360,8 +359,8 @@ class _ManagerPlayersViewState extends State<ManagerPlayersView> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 14, vertical: 6),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                   ),
                   onPressed: () => _showBlockModal(context, playerId, name),
                   icon: const Icon(Icons.block_rounded,

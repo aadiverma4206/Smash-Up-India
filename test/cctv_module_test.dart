@@ -3,7 +3,9 @@ import 'package:all_stars_arena/data/models/cctv_models.dart';
 
 void main() {
   group('ALL STARS ARENA Manager CCTV Management Unit Tests', () {
-    test('CctvCameraModel deserializes camera metadata securely without raw RTSP secrets', () {
+    test(
+        'CctvCameraModel deserializes camera metadata securely without raw RTSP secrets',
+        () {
       final json = {
         'id': 'cam_101',
         'clubId': 'clb_001',
@@ -49,7 +51,9 @@ void main() {
       expect(recording.manualStop, isFalse);
     });
 
-    test('CctvRecordingModel parses STOPPED_MANUALLY status after manager stop action', () {
+    test(
+        'CctvRecordingModel parses STOPPED_MANUALLY status after manager stop action',
+        () {
       final json = {
         'id': 'rec_201',
         'gameId': 'gam_e101',

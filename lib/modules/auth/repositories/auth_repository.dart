@@ -22,11 +22,13 @@ class AuthRepository {
     return await remoteDataSource.sendRegisterOtp(request);
   }
 
-  Future<String> verifyRegisterOtp(RegisterVerifyOtpRequestModel request) async {
+  Future<String> verifyRegisterOtp(
+      RegisterVerifyOtpRequestModel request) async {
     return await remoteDataSource.verifyRegisterOtp(request);
   }
 
-  Future<LoginResponseModel> registerPlayer(RegisterPlayerRequestModel request) async {
+  Future<LoginResponseModel> registerPlayer(
+      RegisterPlayerRequestModel request) async {
     return await remoteDataSource.registerPlayer(request);
   }
 

@@ -56,7 +56,9 @@ class ManagerGameDetailsView extends GetView<ManagerGamesController> {
                       width: 1.5),
                   boxShadow: const [
                     BoxShadow(
-                        color: Colors.black12, blurRadius: 4, offset: Offset(0, 2)),
+                        color: Colors.black12,
+                        blurRadius: 4,
+                        offset: Offset(0, 2)),
                   ],
                 ),
                 child: Column(
@@ -297,8 +299,7 @@ class ManagerGameDetailsView extends GetView<ManagerGamesController> {
           // Header: MANAGER CONTROLS (CLUB_MANAGER)
           Row(
             children: [
-              const Icon(Icons.shield_outlined,
-                  color: Colors.amber, size: 20),
+              const Icon(Icons.shield_outlined, color: Colors.amber, size: 20),
               const SizedBox(width: 8),
               Text(
                 'MANAGER CONTROLS (CLUB_MANAGER)',
@@ -354,9 +355,11 @@ class ManagerGameDetailsView extends GetView<ManagerGamesController> {
                           borderRadius: BorderRadius.circular(24)),
                       backgroundColor: Theme.of(context).cardColor,
                     ),
-                    onPressed: () => _showScoreDialog(context, game, isFinish: true),
+                    onPressed: () =>
+                        _showScoreDialog(context, game, isFinish: true),
                     icon: Icon(Icons.check_circle_outline_rounded,
-                        color: isDark ? Colors.white : Colors.black87, size: 18),
+                        color: isDark ? Colors.white : Colors.black87,
+                        size: 18),
                     label: Text(
                       'Finish Match',
                       style: TextStyle(
@@ -379,7 +382,8 @@ class ManagerGameDetailsView extends GetView<ManagerGamesController> {
                           borderRadius: BorderRadius.circular(24)),
                       elevation: 2,
                     ),
-                    onPressed: () => _showScoreDialog(context, game, isFinish: false),
+                    onPressed: () =>
+                        _showScoreDialog(context, game, isFinish: false),
                     icon: const Icon(Icons.emoji_events_outlined,
                         color: Colors.white, size: 18),
                     label: const Text(
@@ -405,7 +409,8 @@ class ManagerGameDetailsView extends GetView<ManagerGamesController> {
                   height: 46,
                   child: OutlinedButton.icon(
                     style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: AppColors.primary, width: 1.5),
+                      side: const BorderSide(
+                          color: AppColors.primary, width: 1.5),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24)),
                       backgroundColor: Theme.of(context).cardColor,
@@ -493,8 +498,8 @@ class ManagerGameDetailsView extends GetView<ManagerGamesController> {
           ),
           Divider(color: context.borderColor, height: 20),
           Obx(() {
-            final playbackUrl = controller.cctvPlaybackUrl.value ??
-                game.videoPlaybackUrl;
+            final playbackUrl =
+                controller.cctvPlaybackUrl.value ?? game.videoPlaybackUrl;
 
             if (playbackUrl != null && playbackUrl.isNotEmpty) {
               return Column(
@@ -584,8 +589,8 @@ class ManagerGameDetailsView extends GetView<ManagerGamesController> {
                   Expanded(
                     child: Text(
                       'CCTV match video is automatically recorded during the match and saved to secure storage upon completion.',
-                      style: TextStyle(
-                          color: context.textSecondary, fontSize: 12),
+                      style:
+                          TextStyle(color: context.textSecondary, fontSize: 12),
                     ),
                   ),
                 ],
@@ -716,7 +721,8 @@ class ManagerGameDetailsView extends GetView<ManagerGamesController> {
     );
   }
 
-  void _showScoreDialog(BuildContext context, GameModel game, {required bool isFinish}) {
+  void _showScoreDialog(BuildContext context, GameModel game,
+      {required bool isFinish}) {
     teamAController.text = game.teamAScore.toString();
     teamBController.text = game.teamBScore.toString();
 
@@ -724,7 +730,8 @@ class ManagerGameDetailsView extends GetView<ManagerGamesController> {
       AlertDialog(
         backgroundColor: Theme.of(context).cardColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: Text(isFinish ? 'Finish Match & Submit Score' : 'Update Live Score'),
+        title: Text(
+            isFinish ? 'Finish Match & Submit Score' : 'Update Live Score'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -776,7 +783,8 @@ class ManagerGameDetailsView extends GetView<ManagerGamesController> {
 
   void _showEditMatchDialog(BuildContext context, GameModel game) {
     final titleCtrl = TextEditingController(text: game.title);
-    final feeCtrl = TextEditingController(text: game.perPlayerFee.toStringAsFixed(0));
+    final feeCtrl =
+        TextEditingController(text: game.perPlayerFee.toStringAsFixed(0));
 
     Get.dialog(
       AlertDialog(

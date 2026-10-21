@@ -12,7 +12,11 @@ void main() {
         response: Response(
           requestOptions: RequestOptions(path: '/api/v1/test'),
           statusCode: 401,
-          data: {'success': false, 'message': 'Invalid token', 'error': {'code': 'UNAUTHORIZED'}},
+          data: {
+            'success': false,
+            'message': 'Invalid token',
+            'error': {'code': 'UNAUTHORIZED'}
+          },
         ),
       );
 
@@ -22,7 +26,8 @@ void main() {
       expect(exception.code, 'UNAUTHORIZED');
     });
 
-    test('ErrorMapper maps Dio connection error to NetworkException (Offline)', () {
+    test('ErrorMapper maps Dio connection error to NetworkException (Offline)',
+        () {
       final dioException = DioException(
         requestOptions: RequestOptions(path: '/api/v1/test'),
         type: DioExceptionType.connectionError,
@@ -33,7 +38,9 @@ void main() {
       expect(exception.code, 'NO_INTERNET');
     });
 
-    test('ErrorMapper extracts field error details from Zod/Joi validation response', () {
+    test(
+        'ErrorMapper extracts field error details from Zod/Joi validation response',
+        () {
       final dioException = DioException(
         requestOptions: RequestOptions(path: '/api/v1/auth/login'),
         response: Response(
@@ -96,7 +103,8 @@ void main() {
 
   group('Encryption & Security Layer Tests', () {
     test('EncryptionService encrypts and decrypts string correctly', () {
-      final encryptionService = EncryptionService(secretKey: 'all_stars_arena_secure_aes_key');
+      final encryptionService =
+          EncryptionService(secretKey: 'all_stars_arena_secure_aes_key');
       const plainText = 'rtsp://admin:secret123@192.168.1.100:554/stream1';
 
       final encrypted = encryptionService.encrypt(plainText);

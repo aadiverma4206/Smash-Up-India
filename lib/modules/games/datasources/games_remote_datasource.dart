@@ -8,7 +8,15 @@ class GamesRemoteDataSource {
 
   GamesRemoteDataSource({required this.dioClient});
 
-  Future<List<GameModel>> getGames({String? city, String? status, int page = 1, int limit = 20, String? format, String? skill, double? maxEntryFee, String? privacy}) async {
+  Future<List<GameModel>> getGames(
+      {String? city,
+      String? status,
+      int page = 1,
+      int limit = 20,
+      String? format,
+      String? skill,
+      double? maxEntryFee,
+      String? privacy}) async {
     return [
       GameModel(
         id: 'game_1',
@@ -105,12 +113,18 @@ class GamesRemoteDataSource {
     ];
   }
 
-  Future<void> joinGame(String gameId, String position, {String paymentMethod = 'WALLET', String? walletPin, String? razorpayOrderId, String? razorpayPaymentId, String? razorpaySignature}) async {}
+  Future<void> joinGame(String gameId, String position,
+      {String paymentMethod = 'WALLET',
+      String? walletPin,
+      String? razorpayOrderId,
+      String? razorpayPaymentId,
+      String? razorpaySignature}) async {}
   Future<void> leaveGame(String gameId) async {}
   Future<void> switchTeam(String gameId) async {}
   Future<void> cancelPlayerGame(String gameId, String reason) async {}
 
-  Future<Map<String, dynamic>> joinWaitlist(String gameId, String position) async {
+  Future<Map<String, dynamic>> joinWaitlist(
+      String gameId, String position) async {
     return {'queuePosition': 1};
   }
 

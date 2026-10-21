@@ -30,7 +30,8 @@ class ManagerRepository {
     return await remoteDataSource.getClubBookings();
   }
 
-  Future<List<Map<String, dynamic>>> getCourtSlots(String courtId, {required String date}) async {
+  Future<List<Map<String, dynamic>>> getCourtSlots(String courtId,
+      {required String date}) async {
     return await remoteDataSource.getCourtSlots(courtId, date: date);
   }
 
@@ -58,7 +59,8 @@ class ManagerRepository {
     return await remoteDataSource.rejectPlayerGame(gameId, reason);
   }
 
-  Future<List<Map<String, dynamic>>> getAllPlayers({String? search, String? status}) async {
+  Future<List<Map<String, dynamic>>> getAllPlayers(
+      {String? search, String? status}) async {
     return await remoteDataSource.getAllPlayers(search: search, status: status);
   }
 
@@ -70,8 +72,10 @@ class ManagerRepository {
     return await remoteDataSource.unblockPlayer(playerId);
   }
 
-  Future<void> submitMatchScore(String gameId, int teamAScore, int teamBScore, {bool isFinal = false}) async {
-    return await remoteDataSource.submitMatchScore(gameId, teamAScore, teamBScore, isFinal: isFinal);
+  Future<void> submitMatchScore(String gameId, int teamAScore, int teamBScore,
+      {bool isFinal = false}) async {
+    return await remoteDataSource
+        .submitMatchScore(gameId, teamAScore, teamBScore, isFinal: isFinal);
   }
 
   Future<void> stopMatchRecording(String gameId) async {
@@ -90,7 +94,8 @@ class ManagerRepository {
     return await remoteDataSource.startGame(gameId);
   }
 
-  Future<GameModel> completeGame(String gameId, int teamAScore, int teamBScore) async {
+  Future<GameModel> completeGame(
+      String gameId, int teamAScore, int teamBScore) async {
     return await remoteDataSource.completeGame(gameId, teamAScore, teamBScore);
   }
 }

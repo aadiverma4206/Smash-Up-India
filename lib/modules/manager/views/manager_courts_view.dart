@@ -44,8 +44,8 @@ class ManagerCourtsView extends GetView<ManagerDashboardController> {
           );
         }
 
-        final selectedIndex = controller.selectedCourtIndex.value.clamp(
-            0, controller.courts.length - 1);
+        final selectedIndex = controller.selectedCourtIndex.value
+            .clamp(0, controller.courts.length - 1);
         final selectedCourt = controller.courts[selectedIndex];
 
         return RefreshIndicator(
@@ -270,10 +270,9 @@ class ManagerCourtsView extends GetView<ManagerDashboardController> {
     final String timeStr = (slot['time'] ??
             '${slot['startTime'] ?? "18:00"} - ${slot['endTime'] ?? "19:30"}')
         .toString();
-    final String status =
-        (slot['status'] ?? slot['slotStatus'] ?? 'SCHEDULED')
-            .toString()
-            .toUpperCase();
+    final String status = (slot['status'] ?? slot['slotStatus'] ?? 'SCHEDULED')
+        .toString()
+        .toUpperCase();
     final String gameTitle =
         (slot['gameTitle'] ?? slot['title'] ?? 'Available Slot').toString();
     final String hostName =
@@ -373,9 +372,8 @@ class ManagerCourtsView extends GetView<ManagerDashboardController> {
           Text(
             'Host: $hostName • Roster: $currentPlayers / $maxPlayers Players',
             style: TextStyle(
-              color: isDark
-                  ? AppColors.textSecondaryDark
-                  : Colors.grey.shade600,
+              color:
+                  isDark ? AppColors.textSecondaryDark : Colors.grey.shade600,
               fontSize: 12,
             ),
           ),

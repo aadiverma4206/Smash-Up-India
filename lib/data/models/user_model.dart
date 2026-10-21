@@ -38,7 +38,8 @@ class UserModel {
       roleName: json['roleName'] as String?,
       status: json['status'] as String? ?? 'ACTIVE',
       city: json['city'] as String?,
-      profileImageUrl: json['profileImageUrl'] as String? ?? json['avatar'] as String?,
+      profileImageUrl:
+          json['profileImageUrl'] as String? ?? json['avatar'] as String?,
     );
   }
   Map<String, dynamic> toJson() => _$UserModelToJson(this);

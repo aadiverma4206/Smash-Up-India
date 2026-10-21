@@ -16,7 +16,8 @@ class WalletRemoteDataSource {
     );
   }
 
-  Future<List<WalletTransactionModel>> getTransactions({int page = 1, int limit = 50}) async {
+  Future<List<WalletTransactionModel>> getTransactions(
+      {int page = 1, int limit = 50}) async {
     final list = await _db.getTransactions();
     if (list.isEmpty) {
       return [
@@ -27,22 +28,27 @@ class WalletRemoteDataSource {
           balanceAfter: 5000.0,
           description: 'SMASH UP INDIA Welcome Bonus',
           status: 'SUCCESS',
-          createdAt: DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+          createdAt: DateTime.now()
+              .subtract(const Duration(days: 1))
+              .toIso8601String(),
         ),
       ];
     }
-    return list.map((m) => WalletTransactionModel(
-      id: m['id'].toString(),
-      transactionType: 'TOPUP',
-      amount: double.tryParse(m['amount'].toString()) ?? 0.0,
-      balanceAfter: double.tryParse(m['amount'].toString()) ?? 0.0,
-      description: m['title'].toString(),
-      status: m['status'].toString(),
-      createdAt: m['date'].toString(),
-    )).toList();
+    return list
+        .map((m) => WalletTransactionModel(
+              id: m['id'].toString(),
+              transactionType: 'TOPUP',
+              amount: double.tryParse(m['amount'].toString()) ?? 0.0,
+              balanceAfter: double.tryParse(m['amount'].toString()) ?? 0.0,
+              description: m['title'].toString(),
+              status: m['status'].toString(),
+              createdAt: m['date'].toString(),
+            ))
+        .toList();
   }
 
-  Future<RazorpayOrderModel> createTopupOrder(double amount, String idempotencyKey) async {
+  Future<RazorpayOrderModel> createTopupOrder(
+      double amount, String idempotencyKey) async {
     return RazorpayOrderModel(
       paymentOrderId: 'pay_order_${DateTime.now().millisecondsSinceEpoch}',
       orderId: 'order_smash_${DateTime.now().millisecondsSinceEpoch}',

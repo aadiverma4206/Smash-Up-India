@@ -73,9 +73,14 @@ class ManagerRemoteDataSource {
     return [];
   }
 
-  Future<List<Map<String, dynamic>>> getCourtSlots(String courtId, {required String date}) async {
+  Future<List<Map<String, dynamic>>> getCourtSlots(String courtId,
+      {required String date}) async {
     return [
-      {'slotTime': '18:00 - 19:00', 'status': 'BOOKED', 'userName': 'Rahul Player'},
+      {
+        'slotTime': '18:00 - 19:00',
+        'status': 'BOOKED',
+        'userName': 'Rahul Player'
+      },
       {'slotTime': '19:00 - 20:00', 'status': 'AVAILABLE', 'userName': ''},
     ];
   }
@@ -83,16 +88,29 @@ class ManagerRemoteDataSource {
   Future<void> approveSlotRequest(String requestId) async {}
   Future<void> rejectSlotRequest(String requestId, String reason) async {}
   Future<void> cancelGameWithRefunds(String gameId, String reason) async {}
-  Future<List<GameModel>> getPendingPlayerGames() async { return []; }
+  Future<List<GameModel>> getPendingPlayerGames() async {
+    return [];
+  }
+
   Future<void> approvePlayerGame(String gameId) async {}
   Future<void> rejectPlayerGame(String gameId, String reason) async {}
-  Future<List<Map<String, dynamic>>> getAllPlayers({String? search, String? status}) async { return []; }
+  Future<List<Map<String, dynamic>>> getAllPlayers(
+      {String? search, String? status}) async {
+    return [];
+  }
+
   Future<void> blockPlayer(String playerId, String reason) async {}
   Future<void> unblockPlayer(String playerId) async {}
-  Future<void> submitMatchScore(String gameId, int teamAScore, int teamBScore, {bool isFinal = false}) async {}
+  Future<void> submitMatchScore(String gameId, int teamAScore, int teamBScore,
+      {bool isFinal = false}) async {}
   Future<void> stopMatchRecording(String gameId) async {}
-  Future<List<GameModel>> getClubGames() async { return getClubMatches(); }
-  Future<Map<String, dynamic>> getMatchRecording(String gameId) async { return {}; }
+  Future<List<GameModel>> getClubGames() async {
+    return getClubMatches();
+  }
+
+  Future<Map<String, dynamic>> getMatchRecording(String gameId) async {
+    return {};
+  }
 
   Future<GameModel> startGame(String gameId) async {
     return GameModel(
@@ -114,7 +132,8 @@ class ManagerRemoteDataSource {
     );
   }
 
-  Future<GameModel> completeGame(String gameId, int teamAScore, int teamBScore) async {
+  Future<GameModel> completeGame(
+      String gameId, int teamAScore, int teamBScore) async {
     return GameModel(
       id: gameId,
       title: 'SMASH UP INDIA Completed Match',

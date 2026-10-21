@@ -46,7 +46,8 @@ class PlayerRemoteDataSource {
       NotificationModel(
         id: 'notif_1',
         title: 'Welcome to Smash Up India!',
-        body: 'Your account has been successfully set up with 5,000 welcome credits.',
+        body:
+            'Your account has been successfully set up with 5,000 welcome credits.',
         type: 'GENERAL',
         createdAt: DateTime.now().toIso8601String(),
         isRead: false,

@@ -20,13 +20,15 @@ class AuthRemoteDataSource {
     String email = identifier.contains('@') ? identifier : 'player@gmail.com';
     String phone = '9988776655';
 
-    if (identifier.contains('admin') || identifier == 'aadiverma4206@gmail.com') {
+    if (identifier.contains('admin') ||
+        identifier == 'aadiverma4206@gmail.com') {
       roleId = 1;
       name = 'Aadi Verma (Admin)';
       token = 'mock_admin_token_123';
       email = 'aadiverma4206@gmail.com';
       phone = '9876543210';
-    } else if (identifier.contains('roshan') || identifier == 'roshan12@gmail.com') {
+    } else if (identifier.contains('roshan') ||
+        identifier == 'roshan12@gmail.com') {
       roleId = 2;
       name = 'Roshan Sharma (Manager)';
       token = 'mock_manager_token_123';
@@ -73,8 +75,13 @@ class AuthRemoteDataSource {
   }
 
   Future<void> sendRegisterOtp(RegisterSendOtpRequestModel request) async {}
-  Future<String> verifyRegisterOtp(RegisterVerifyOtpRequestModel request) async { return 'mock_token'; }
-  Future<LoginResponseModel> registerPlayer(RegisterPlayerRequestModel request) async {
+  Future<String> verifyRegisterOtp(
+      RegisterVerifyOtpRequestModel request) async {
+    return 'mock_token';
+  }
+
+  Future<LoginResponseModel> registerPlayer(
+      RegisterPlayerRequestModel request) async {
     final user = UserModel(
       id: '3',
       name: request.name,
@@ -94,7 +101,10 @@ class AuthRemoteDataSource {
   }
 
   Future<void> forgotSendOtp(String identifier) async {}
-  Future<String> forgotVerifyOtp(String identifier, String otp) async { return 'token'; }
+  Future<String> forgotVerifyOtp(String identifier, String otp) async {
+    return 'token';
+  }
+
   Future<void> resetPassword(String token, String newPassword) async {}
 
   Future<List<SessionModel>> getSessions() async {
@@ -104,7 +114,8 @@ class AuthRemoteDataSource {
         deviceInfo: 'Android Simulator (SMASH UP INDIA)',
         ipAddress: '192.168.1.10',
         createdAt: DateTime.now().toIso8601String(),
-        expiresAt: DateTime.now().add(const Duration(days: 7)).toIso8601String(),
+        expiresAt:
+            DateTime.now().add(const Duration(days: 7)).toIso8601String(),
       ),
     ];
   }

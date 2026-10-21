@@ -32,7 +32,8 @@ class FootballGameType {
     return FootballGameType(
       id: map['id'] ?? '',
       name: map['name'] ?? '',
-      category: GameCategory.fromString(map['category'] ?? '') ?? GameCategory.indoor,
+      category:
+          GameCategory.fromString(map['category'] ?? '') ?? GameCategory.indoor,
       format: map['format'] ?? '',
       sport: map['sport'] ?? 'Football',
       isActive: map['isActive'] == 1 || map['isActive'] == true,

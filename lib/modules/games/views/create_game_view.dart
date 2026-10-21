@@ -130,8 +130,8 @@ class CreateGameView extends StatelessWidget {
       final selectedCourt = controller.selectedCourt.value;
 
       final List<Widget> courtButtons = courts.map<Widget>((court) {
-        final isSelected = selectedCourt?.id == court.id ||
-            selectedCourt?.name == court.name;
+        final isSelected =
+            selectedCourt?.id == court.id || selectedCourt?.name == court.name;
         return InkWell(
           onTap: () {
             controller.selectedCourt.value = court;
@@ -171,8 +171,8 @@ class CreateGameView extends StatelessWidget {
           InputDecorator(
             decoration: InputDecoration(
               labelText: 'Club Name *',
-              prefixIcon: const Icon(Icons.business_rounded,
-                  color: AppColors.primary),
+              prefixIcon:
+                  const Icon(Icons.business_rounded, color: AppColors.primary),
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
               border: OutlineInputBorder(
@@ -181,8 +181,7 @@ class CreateGameView extends StatelessWidget {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide:
-                    BorderSide(color: context.borderColor, width: 1.2),
+                borderSide: BorderSide(color: context.borderColor, width: 1.2),
               ),
             ),
             child: Text(
@@ -250,7 +249,8 @@ class CreateGameView extends StatelessWidget {
             children: [
               Expanded(
                 child: Obx(() {
-                  final isIndoor = controller.selectedCategory.value == GameCategory.indoor;
+                  final isIndoor =
+                      controller.selectedCategory.value == GameCategory.indoor;
                   return ChoiceChip(
                     label: Center(
                       child: Text('Indoor',
@@ -264,7 +264,8 @@ class CreateGameView extends StatelessWidget {
                     selectedColor: AppColors.primary,
                     backgroundColor: context.cardColor,
                     onSelected: (selected) {
-                      if (selected) controller.onCategoryChanged(GameCategory.indoor);
+                      if (selected)
+                        controller.onCategoryChanged(GameCategory.indoor);
                     },
                   );
                 }),
@@ -272,7 +273,8 @@ class CreateGameView extends StatelessWidget {
               const SizedBox(width: 10),
               Expanded(
                 child: Obx(() {
-                  final isOutdoor = controller.selectedCategory.value == GameCategory.outdoor;
+                  final isOutdoor =
+                      controller.selectedCategory.value == GameCategory.outdoor;
                   return ChoiceChip(
                     label: Center(
                       child: Text('Outdoor',
@@ -286,7 +288,8 @@ class CreateGameView extends StatelessWidget {
                     selectedColor: AppColors.primary,
                     backgroundColor: context.cardColor,
                     onSelected: (selected) {
-                      if (selected) controller.onCategoryChanged(GameCategory.outdoor);
+                      if (selected)
+                        controller.onCategoryChanged(GameCategory.outdoor);
                     },
                   );
                 }),
@@ -299,7 +302,7 @@ class CreateGameView extends StatelessWidget {
           Obx(() {
             final category = controller.selectedCategory.value;
             final isEnabled = category != null;
-            final labelText = category == null 
+            final labelText = category == null
                 ? 'Game Type *'
                 : 'Select ${category == GameCategory.indoor ? 'Indoor' : 'Outdoor'} Game *';
 
@@ -309,56 +312,65 @@ class CreateGameView extends StatelessWidget {
               value: controller.selectedGameType.value,
               decoration: InputDecoration(
                 labelText: labelText,
-                prefixIcon: const Icon(Icons.sports_soccer_rounded, color: AppColors.primary),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                prefixIcon: const Icon(Icons.sports_soccer_rounded,
+                    color: AppColors.primary),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: context.borderColor, width: 1.2),
+                  borderSide:
+                      BorderSide(color: context.borderColor, width: 1.2),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: AppColors.primary, width: 1.8),
+                  borderSide:
+                      const BorderSide(color: AppColors.primary, width: 1.8),
                 ),
               ),
               dropdownColor: context.cardColor,
               items: controller.availableGameTypes.map((game) {
                 return DropdownMenuItem<FootballGameType>(
                   value: game,
-                  child: Text(game.name, style: TextStyle(color: context.textPrimary)),
+                  child: Text(game.name,
+                      style: TextStyle(color: context.textPrimary)),
                 );
               }).toList(),
               onChanged: isEnabled ? controller.onGameTypeChanged : null,
-              validator: (val) => val == null ? 'Please select a game type' : null,
+              validator: (val) =>
+                  val == null ? 'Please select a game type' : null,
             );
           }),
           const SizedBox(height: 16),
 
           // Derived Format Selection (Disabled/Read-only)
           Obx(() => InputDecorator(
-            decoration: InputDecoration(
-              labelText: 'Game Format',
-              prefixIcon: const Icon(Icons.groups_rounded, color: AppColors.primary),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: context.borderColor, width: 1.2),
-              ),
-              fillColor: context.theme.disabledColor.withAlpha(20),
-              filled: true,
-            ),
-            child: Text(
-              controller.selectedFormat.value.isEmpty 
-                  ? 'Automatically determined'
-                  : controller.selectedFormat.value,
-              style: TextStyle(
-                color: controller.selectedFormat.value.isEmpty 
-                    ? context.textSecondary 
-                    : context.textPrimary,
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          )),
+                decoration: InputDecoration(
+                  labelText: 'Game Format',
+                  prefixIcon: const Icon(Icons.groups_rounded,
+                      color: AppColors.primary),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide:
+                        BorderSide(color: context.borderColor, width: 1.2),
+                  ),
+                  fillColor: context.theme.disabledColor.withAlpha(20),
+                  filled: true,
+                ),
+                child: Text(
+                  controller.selectedFormat.value.isEmpty
+                      ? 'Automatically determined'
+                      : controller.selectedFormat.value,
+                  style: TextStyle(
+                    color: controller.selectedFormat.value.isEmpty
+                        ? context.textSecondary
+                        : context.textPrimary,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              )),
           const SizedBox(height: 16),
 
           // Match Title
@@ -720,8 +732,7 @@ class CreateGameView extends StatelessWidget {
         style: TextStyle(color: context.textPrimary, fontSize: 13),
         decoration: InputDecoration(
           labelText: 'Match Rules & Extra Details (Optional)',
-          hintText:
-              'e.g. Bring necessary equipment. Standard rules apply.',
+          hintText: 'e.g. Bring necessary equipment. Standard rules apply.',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
           ),
@@ -790,7 +801,8 @@ class CreateGameView extends StatelessWidget {
             width: double.infinity,
             height: 50,
             child: AppButton(
-              text: 'Create ${controller.selectedGameType.value?.name ?? 'Game'}',
+              text:
+                  'Create ${controller.selectedGameType.value?.name ?? 'Game'}',
               isLoading: controller.isLoading.value,
               onPressed: controller.proceedToCheckout,
             ),

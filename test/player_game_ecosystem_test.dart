@@ -24,8 +24,18 @@ void main() {
         'teamAScore': 0,
         'teamBScore': 0,
         'roster': [
-          {'userId': 'usr_1', 'name': 'Player 1', 'team': 'TEAM_A', 'position': 'ST'},
-          {'userId': 'usr_2', 'name': 'Player 2', 'team': 'TEAM_B', 'position': 'GK'},
+          {
+            'userId': 'usr_1',
+            'name': 'Player 1',
+            'team': 'TEAM_A',
+            'position': 'ST'
+          },
+          {
+            'userId': 'usr_2',
+            'name': 'Player 2',
+            'team': 'TEAM_B',
+            'position': 'GK'
+          },
         ],
       };
 

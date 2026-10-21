@@ -377,10 +377,10 @@ class _ManagerDashboardViewState extends State<ManagerDashboardView> {
                 NavigationRailDestination(
                     icon: Icon(Icons.stadium_outlined), label: Text('Court 2')),
                 NavigationRailDestination(
-                    icon: Icon(Icons.history_rounded),
-                    label: Text('History')),
+                    icon: Icon(Icons.history_rounded), label: Text('History')),
                 NavigationRailDestination(
-                    icon: Icon(Icons.people_alt_rounded), label: Text('Players')),
+                    icon: Icon(Icons.people_alt_rounded),
+                    label: Text('Players')),
               ],
             ),
           ),
@@ -1136,9 +1136,8 @@ class _ManagerDashboardViewState extends State<ManagerDashboardView> {
                   style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      color: isDark
-                          ? AppColors.textPrimaryDark
-                          : Colors.black87),
+                      color:
+                          isDark ? AppColors.textPrimaryDark : Colors.black87),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -1163,17 +1162,15 @@ class _ManagerDashboardViewState extends State<ManagerDashboardView> {
           Text(
             '${game.courtName} • ${AppDateUtils.formatDate(game.matchDate)} (${AppDateUtils.formatTime(game.startTime)})',
             style: TextStyle(
-                color: isDark
-                    ? AppColors.textSecondaryDark
-                    : Colors.grey.shade600,
+                color:
+                    isDark ? AppColors.textSecondaryDark : Colors.grey.shade600,
                 fontSize: 12),
           ),
           Text(
             'Roster: ${game.currentPlayers}/${game.maxPlayers} • Entry Fee: ₹${game.perPlayerFee.toStringAsFixed(0)}',
             style: TextStyle(
-                color: isDark
-                    ? AppColors.textSecondaryDark
-                    : Colors.grey.shade600,
+                color:
+                    isDark ? AppColors.textSecondaryDark : Colors.grey.shade600,
                 fontSize: 11),
           ),
           const SizedBox(height: 12),
@@ -1691,7 +1688,8 @@ class _ManagerDashboardViewState extends State<ManagerDashboardView> {
             Expanded(
               child: Text(game.title,
                   style: TextStyle(
-                      color: isDark ? AppColors.textPrimaryDark : Colors.black87,
+                      color:
+                          isDark ? AppColors.textPrimaryDark : Colors.black87,
                       fontWeight: FontWeight.bold,
                       fontSize: 14),
                   maxLines: 1,

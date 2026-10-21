@@ -10,15 +10,19 @@ class AppColors {
   static const Color vibrantRed = Color(0xFFFF3B30); // Red Accent
 
   // AppBar & Action Colors (Light Mode & Dark Mode)
-  static const Color lightBlueAppBar = Color(0xFF01163C); // Updated to match requested deep navy
-  static const Color lightBlueBg = Color(0xFFE0F2FE); // Soft Light Blue Background
+  static const Color lightBlueAppBar =
+      Color(0xFF01163C); // Updated to match requested deep navy
+  static const Color lightBlueBg =
+      Color(0xFFE0F2FE); // Soft Light Blue Background
   static const Color lightBlueBorder = Color(0xFF93C5FD); // Light Blue Border
-  static const Color darkAppBar = Color(0xFF01163C); // Updated to match requested deep navy
+  static const Color darkAppBar =
+      Color(0xFF01163C); // Updated to match requested deep navy
 
   // Neutral Colors - Dark Mode (Deep Pitch Dark Navy Blue - Even darker than reference)
   static const Color darkBackground =
       Color(0xFF040812); // Pitch Dark Navy Background
-  static const Color darkCard = Color(0xFF0A1424); // Rich Dark Navy Surface Card
+  static const Color darkCard =
+      Color(0xFF0A1424); // Rich Dark Navy Surface Card
   static const Color darkInputBg = Color(0xFF101E32); // Input Field Fill Navy
   static const Color darkBorder = Color(0xFF1A2E4C); // Subtle Navy Border Color
 

@@ -68,29 +68,47 @@ class CreateGameController extends GetxController {
   void updateFormatAndPlayers(String format) {
     selectedFormat.value = format;
     switch (format) {
-      case '11v11': maxPlayers.value = 22; break;
-      case '9v9': maxPlayers.value = 18; break;
-      case '7v7': maxPlayers.value = 14; break;
-      case '6v6': maxPlayers.value = 12; break;
-      case '5v5': maxPlayers.value = 10; break;
-      case '3v3': maxPlayers.value = 6; break;
-      case '2v2': maxPlayers.value = 4; break;
-      case '1v1': maxPlayers.value = 2; break;
-      default: maxPlayers.value = 22; break;
+      case '11v11':
+        maxPlayers.value = 22;
+        break;
+      case '9v9':
+        maxPlayers.value = 18;
+        break;
+      case '7v7':
+        maxPlayers.value = 14;
+        break;
+      case '6v6':
+        maxPlayers.value = 12;
+        break;
+      case '5v5':
+        maxPlayers.value = 10;
+        break;
+      case '3v3':
+        maxPlayers.value = 6;
+        break;
+      case '2v2':
+        maxPlayers.value = 4;
+        break;
+      case '1v1':
+        maxPlayers.value = 2;
+        break;
+      default:
+        maxPlayers.value = 22;
+        break;
     }
   }
 
   Future<void> onCategoryChanged(GameCategory? category) async {
     if (category == null || category == selectedCategory.value) return;
-    
+
     selectedCategory.value = category;
     selectedGameType.value = null;
     selectedFormat.value = '';
     maxPlayers.value = 0;
     availableGameTypes.clear();
-    
+
     await _prefs.setLastGameCategory(category.value);
-    
+
     await loadGameTypes(category.value);
   }
 
@@ -153,10 +171,11 @@ class CreateGameController extends GetxController {
       if (parsedCat != null) {
         selectedCategory.value = parsedCat;
         await loadGameTypes(parsedCat.value);
-        
+
         final lastGameId = _prefs.getLastGameTypeId();
         if (lastGameId != null && availableGameTypes.isNotEmpty) {
-          final found = availableGameTypes.firstWhereOrNull((g) => g.id == lastGameId);
+          final found =
+              availableGameTypes.firstWhereOrNull((g) => g.id == lastGameId);
           if (found != null) {
             onGameTypeChanged(found);
           }
@@ -238,9 +257,10 @@ class CreateGameController extends GetxController {
       final courtsList = <CourtModel>[];
       for (int i = 0; i < fetchedCourts.length; i++) {
         final c = fetchedCourts[i];
-        final courtName = (c.name.toLowerCase().contains('court 2') || c.id.endsWith('2'))
-            ? 'Court 2'
-            : (i == 0 ? 'Court 1' : (i == 1 ? 'Court 2' : c.name));
+        final courtName =
+            (c.name.toLowerCase().contains('court 2') || c.id.endsWith('2'))
+                ? 'Court 2'
+                : (i == 0 ? 'Court 1' : (i == 1 ? 'Court 2' : c.name));
         courtsList.add(CourtModel(
           id: c.id.isNotEmpty ? c.id : 'crt_court_${i + 1}',
           clubId: c.clubId.isNotEmpty ? c.clubId : selectedClub.value.id,
@@ -266,7 +286,8 @@ class CreateGameController extends GetxController {
       availableCourts.assignAll([court1, court2]);
     }
 
-    if (selectedCourt.value == null || !availableCourts.contains(selectedCourt.value)) {
+    if (selectedCourt.value == null ||
+        !availableCourts.contains(selectedCourt.value)) {
       selectedCourt.value = availableCourts.first;
     }
   }

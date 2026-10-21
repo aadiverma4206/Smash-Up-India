@@ -7,11 +7,12 @@ import 'core/network/dio_client.dart';
 import 'core/services/theme_service.dart';
 import 'core/services/auth_service.dart';
 import 'core/utils/app_logger.dart';
-//hy
+
 Future<void> bootstrap({String envFile = '.env.dev'}) async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  AppLogger.info('⚡ App initialized in offline mode (disconnected from backend and database).');
+  AppLogger.info(
+      '⚡ App initialized in offline mode (disconnected from backend and database).');
 
   try {
     final prefs = PreferencesService();

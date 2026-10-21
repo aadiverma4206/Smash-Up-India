@@ -39,8 +39,11 @@ class CctvRemoteDataSource {
       status: 'RECORDING',
       recordingStatus: 'RECORDING',
       startedAt: DateTime.now().toIso8601String(),
-      scheduledMatchEnd: DateTime.now().add(const Duration(hours: 1)).toIso8601String(),
-      stopDeadline: DateTime.now().add(const Duration(hours: 1, minutes: 15)).toIso8601String(),
+      scheduledMatchEnd:
+          DateTime.now().add(const Duration(hours: 1)).toIso8601String(),
+      stopDeadline: DateTime.now()
+          .add(const Duration(hours: 1, minutes: 15))
+          .toIso8601String(),
     );
   }
 
@@ -57,7 +60,8 @@ class CctvRemoteDataSource {
     );
   }
 
-  Future<CctvRecordingModel> extendRecording(String recordingId, int minutes) async {
+  Future<CctvRecordingModel> extendRecording(
+      String recordingId, int minutes) async {
     return CctvRecordingModel(
       id: recordingId,
       gameId: 'game_1',
@@ -65,8 +69,11 @@ class CctvRemoteDataSource {
       status: 'RECORDING',
       recordingStatus: 'RECORDING',
       startedAt: DateTime.now().toIso8601String(),
-      scheduledMatchEnd: DateTime.now().add(const Duration(hours: 1)).toIso8601String(),
-      stopDeadline: DateTime.now().add(const Duration(hours: 1, minutes: 15)).toIso8601String(),
+      scheduledMatchEnd:
+          DateTime.now().add(const Duration(hours: 1)).toIso8601String(),
+      stopDeadline: DateTime.now()
+          .add(const Duration(hours: 1, minutes: 15))
+          .toIso8601String(),
     );
   }
 }

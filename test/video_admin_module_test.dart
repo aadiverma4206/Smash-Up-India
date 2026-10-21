@@ -42,7 +42,8 @@ void main() {
       expect(user.status, 'ACTIVE');
     });
 
-    test('VideoModel deserializes short-lived signed S3 playback URL securely', () {
+    test('VideoModel deserializes short-lived signed S3 playback URL securely',
+        () {
       final json = {
         'id': 'vid_501',
         'gameId': 'gam_e101',
@@ -50,7 +51,8 @@ void main() {
         'clubName': 'All Stars Turf Raipur',
         'courtName': 'Pitch 1',
         'matchDate': '2026-09-28',
-        'playbackUrl': 'https://all-stars-arena-recordings.s3.ap-south-1.amazonaws.com/recordings/test.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA...',
+        'playbackUrl':
+            'https://all-stars-arena-recordings.s3.ap-south-1.amazonaws.com/recordings/test.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA...',
         'durationSeconds': 5400,
       };
 

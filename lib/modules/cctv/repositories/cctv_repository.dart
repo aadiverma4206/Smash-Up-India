@@ -26,7 +26,8 @@ class CctvRepository {
     return await remoteDataSource.stopRecording(recordingId);
   }
 
-  Future<CctvRecordingModel> extendRecording(String recordingId, int minutes) async {
+  Future<CctvRecordingModel> extendRecording(
+      String recordingId, int minutes) async {
     return await remoteDataSource.extendRecording(recordingId, minutes);
   }
 }

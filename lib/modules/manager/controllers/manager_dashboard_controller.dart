@@ -9,7 +9,8 @@ import '../../../data/models/game_model.dart';
 import '../../../core/errors/error_handler.dart';
 import '../../../core/utils/app_logger.dart';
 
-class ManagerDashboardController extends GetxController with WidgetsBindingObserver {
+class ManagerDashboardController extends GetxController
+    with WidgetsBindingObserver {
   final ManagerRepository repository = Get.find<ManagerRepository>();
 
   final Rxn<ManagerDashboardModel> dashboard = Rxn<ManagerDashboardModel>();
@@ -21,11 +22,13 @@ class ManagerDashboardController extends GetxController with WidgetsBindingObser
   final RxList<GameModel> pendingPlayerGames = <GameModel>[].obs;
   final RxList<Map<String, dynamic>> court1Slots = <Map<String, dynamic>>[].obs;
   final RxList<Map<String, dynamic>> court2Slots = <Map<String, dynamic>>[].obs;
-  final RxList<Map<String, dynamic>> currentCourtSlots = <Map<String, dynamic>>[].obs;
+  final RxList<Map<String, dynamic>> currentCourtSlots =
+      <Map<String, dynamic>>[].obs;
   final RxList<Map<String, dynamic>> playersList = <Map<String, dynamic>>[].obs;
 
   final RxInt selectedCourtIndex = 0.obs;
-  final RxString selectedMatchTab = 'TODAY'.obs; // TODAY, UPCOMING, ONGOING, CANCELLED
+  final RxString selectedMatchTab =
+      'TODAY'.obs; // TODAY, UPCOMING, ONGOING, CANCELLED
   final RxBool isLoading = false.obs;
   final RxBool isSlotsLoading = false.obs;
   final RxBool isActionLoading = false.obs;
@@ -80,7 +83,8 @@ class ManagerDashboardController extends GetxController with WidgetsBindingObser
       await fetchPendingPlayerGames();
 
       if (courts.isNotEmpty) {
-        final courtId = courts[selectedCourtIndex.value.clamp(0, courts.length - 1)].id;
+        final courtId =
+            courts[selectedCourtIndex.value.clamp(0, courts.length - 1)].id;
         await fetchCourtSlots(courtId);
       }
     } catch (e) {
@@ -108,10 +112,12 @@ class ManagerDashboardController extends GetxController with WidgetsBindingObser
     await fetchCourtSlots(courtId);
   }
 
-  Future<void> fetchCourtSlots(String courtId, {int courtIndex = 1, String? date}) async {
+  Future<void> fetchCourtSlots(String courtId,
+      {int courtIndex = 1, String? date}) async {
     isSlotsLoading.value = true;
     try {
-      final slots = await repository.getCourtSlots(courtId, date: date ?? '2025-03-30');
+      final slots =
+          await repository.getCourtSlots(courtId, date: date ?? '2025-03-30');
       currentCourtSlots.assignAll(slots);
       if (courtIndex == 1) {
         court1Slots.assignAll(slots);
@@ -218,7 +224,8 @@ class ManagerDashboardController extends GetxController with WidgetsBindingObser
 
   Future<void> fetchAllPlayers({String? search, String? status}) async {
     try {
-      final list = await repository.getAllPlayers(search: search, status: status);
+      final list =
+          await repository.getAllPlayers(search: search, status: status);
       playersList.assignAll(list);
     } catch (e) {
       AppLogger.warning('Error fetching players: $e');
@@ -230,7 +237,8 @@ class ManagerDashboardController extends GetxController with WidgetsBindingObser
     try {
       await repository.blockPlayer(playerId, reason);
       await fetchAllPlayers();
-      ErrorHandler.showSuccessSnackBar('Player Blocked', 'Player access has been restricted');
+      ErrorHandler.showSuccessSnackBar(
+          'Player Blocked', 'Player access has been restricted');
     } catch (e) {
       ErrorHandler.showErrorSnackBar('Block Error', e);
     } finally {
@@ -243,7 +251,8 @@ class ManagerDashboardController extends GetxController with WidgetsBindingObser
     try {
       await repository.unblockPlayer(playerId);
       await fetchAllPlayers();
-      ErrorHandler.showSuccessSnackBar('Player Unblocked', 'Player access restored');
+      ErrorHandler.showSuccessSnackBar(
+          'Player Unblocked', 'Player access restored');
     } catch (e) {
       ErrorHandler.showErrorSnackBar('Unblock Error', e);
     } finally {
@@ -251,12 +260,15 @@ class ManagerDashboardController extends GetxController with WidgetsBindingObser
     }
   }
 
-  Future<void> submitMatchScore(String gameId, int teamAScore, int teamBScore, {bool isFinal = true}) async {
+  Future<void> submitMatchScore(String gameId, int teamAScore, int teamBScore,
+      {bool isFinal = true}) async {
     isActionLoading.value = true;
     try {
-      await repository.submitMatchScore(gameId, teamAScore, teamBScore, isFinal: isFinal);
+      await repository.submitMatchScore(gameId, teamAScore, teamBScore,
+          isFinal: isFinal);
       await loadManagerData();
-      ErrorHandler.showSuccessSnackBar('Score Recorded', 'Official match result has been published');
+      ErrorHandler.showSuccessSnackBar(
+          'Score Recorded', 'Official match result has been published');
     } catch (e) {
       ErrorHandler.showErrorSnackBar('Score Submission Error', e);
     } finally {
@@ -268,7 +280,8 @@ class ManagerDashboardController extends GetxController with WidgetsBindingObser
     isActionLoading.value = true;
     try {
       await repository.stopMatchRecording(gameId);
-      ErrorHandler.showSuccessSnackBar('Recording Stopped', 'CCTV recording stopped and stored to AWS S3');
+      ErrorHandler.showSuccessSnackBar(
+          'Recording Stopped', 'CCTV recording stopped and stored to AWS S3');
     } catch (e) {
       ErrorHandler.showErrorSnackBar('Stop Recording Error', e);
     } finally {

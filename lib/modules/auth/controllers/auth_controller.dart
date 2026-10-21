@@ -111,10 +111,12 @@ class AuthController extends GetxController {
     errorMessage.value = '';
 
     try {
-      await Future.delayed(const Duration(milliseconds: 600)); // smooth UX delay
+      await Future.delayed(
+          const Duration(milliseconds: 600)); // smooth UX delay
 
       final trimmed = identifier.trim().toLowerCase();
-      Map<String, dynamic>? userMap = await dbHelper.getUserByEmailOrPhone(trimmed);
+      Map<String, dynamic>? userMap =
+          await dbHelper.getUserByEmailOrPhone(trimmed);
 
       // If user doesn't exist in local DB yet, create a default one based on role or identifier
       if (userMap == null) {
@@ -123,7 +125,8 @@ class AuthController extends GetxController {
         if (trimmed.contains('admin') || trimmed == 'aadiverma4206@gmail.com') {
           roleId = 1;
           name = 'Aadi Verma (Admin)';
-        } else if (trimmed.contains('roshan') || trimmed == 'roshan12@gmail.com') {
+        } else if (trimmed.contains('roshan') ||
+            trimmed == 'roshan12@gmail.com') {
           roleId = 2;
           name = 'Roshan Sharma (Manager)';
         } else {
@@ -133,13 +136,15 @@ class AuthController extends GetxController {
         userMap = {
           'id': DateTime.now().millisecondsSinceEpoch ~/ 1000,
           'name': name,
-          'email': trimmed.contains('@') ? trimmed : '$trimmed@smashupindia.com',
+          'email':
+              trimmed.contains('@') ? trimmed : '$trimmed@smashupindia.com',
           'phone': trimmed.contains('@') ? '9876543210' : trimmed,
           'roleId': roleId,
           'city': 'Raipur',
           'status': 'ACTIVE',
           'avatar': '',
-          'token': 'smash_token_${roleId}_${DateTime.now().millisecondsSinceEpoch}',
+          'token':
+              'smash_token_${roleId}_${DateTime.now().millisecondsSinceEpoch}',
         };
         await dbHelper.saveUser(userMap);
       }
@@ -148,7 +153,8 @@ class AuthController extends GetxController {
       final accessToken = userMap['token'] ?? 'mock_token_123';
       final refreshToken = 'mock_refresh_token_123';
 
-      await secureStorage.saveTokens(accessToken: accessToken, refreshToken: refreshToken);
+      await secureStorage.saveTokens(
+          accessToken: accessToken, refreshToken: refreshToken);
       AuthService.to.setLoggedInUser(user, accessToken, refreshToken);
 
       routeUserByRole(user.roleId);
@@ -228,7 +234,8 @@ class AuthController extends GetxController {
       const accessToken = 'smash_token_player_new';
       const refreshToken = 'smash_refresh_player_new';
 
-      await secureStorage.saveTokens(accessToken: accessToken, refreshToken: refreshToken);
+      await secureStorage.saveTokens(
+          accessToken: accessToken, refreshToken: refreshToken);
       AuthService.to.setLoggedInUser(user, accessToken, refreshToken);
 
       registrationStep.value = 4;
